@@ -25,3 +25,11 @@
 5. 启动项目：node index.js
 6. 在index.js中打断点，通过 `运行和调试` 菜单中的 `开始调试` 按钮进行断点吊饰即可
 ```
+
+### (2) 测试
+- 中间件
+  - 中间件执行顺序测试  `cnpm run order`
+  - 中间键执行顺序测试，对应文件 `test/index-order-test.js`
+- node.js
+  - http.createServer `cnpm run createServer`
+  - http.createServe，对用文件 `test/createServer`

@@ -17,7 +17,9 @@
     "build": "gen-esm-wrapper . ./dist/koa.mjs",
     "prepare": "npm run build",
     "start": "node index.js",
-    "dev": "node index.js"
+    "dev": "node index.js",
+    "order": "node test/index-order-test",
+    "createServer": "node test/createServer"
   },
   "repository": "koajs/koa",
   "keywords": [
