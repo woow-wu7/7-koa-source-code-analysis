@@ -33,6 +33,8 @@
 - node.js
   - http.createServer `cnpm run createServer`
   - http.createServe，对用文件 `test/createServer`
+- node.js事件循环顺序
+  - process.nextTick() `cnpm run eventLoop`
 
 ### (3) 中间件
 - 调用顺序：app.listen() ---> callback() ---> handleRequest() ---> 中间件fn(ctx).then(handleResponse).catch(onerror)

@@ -19,7 +19,8 @@
     "start": "node index.js",
     "dev": "node index.js",
     "order": "node test/index-order-test",
-    "createServer": "node test/createServer"
+    "createServer": "node test/createServer",
+    "eventLoop": "node test/process.nextTick"
   },
   "repository": "koajs/koa",
   "keywords": [
