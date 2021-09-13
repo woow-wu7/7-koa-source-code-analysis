@@ -55,4 +55,18 @@ const fnMiddleware = function(context, next) {
     }))
   }))
 }
+
+7. 执行的最终状态如下
+fn1(async (ctx, fn2) => {
+  console.log(1)
+  fn2(async (ctx, fn3) => {
+      console.log(2)
+      fn3(ctx) => {
+        console.lo(3)
+      }
+      console.log(4)
+  })
+  console.log(5)
+})
+// 12345
 ```
