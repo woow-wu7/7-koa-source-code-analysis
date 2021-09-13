@@ -1,7 +1,7 @@
 # koa-源码分析
 
 
-#### (1) 如何调试koa源码
+### (1) 如何调试koa源码
 - 本项目已经做好了调试配置，只需要执行 `cnpm run dev` 断点调试 `index.js` 文件即可
 ```
 1. 克隆koa源码：git clone git@github.com:koajs/koa.git
@@ -28,7 +28,7 @@
 
 
 
-#### (2) 测试
+### (2) 测试
 - 中间件
   - 中间件执行顺序测试  `cnpm run order`
   - 中间键执行顺序测试，对应文件 `test/index-order-test.js`
@@ -40,7 +40,7 @@
 
 
 
-#### (3) 中间件
+### (3) 中间件
 - 调用顺序：app.listen() ---> callback() ---> handleRequest() ---> 中间件fn(ctx).then(handleResponse).catch(onerror)
 - fnMiddleware = compose(this.middleware) = function (context, next) =>  dispatch(0)
 ```
@@ -79,7 +79,7 @@ fn1(async (ctx, fn2) => {
 
 
 
-#### (4) nodejs事件轮询
+### (4) nodejs事件轮询
 ```
 2
 process.nextTick
@@ -89,7 +89,7 @@ process.nextTick
   - 执行时机在同步任务之后，在异步任务宏任务setTimeout之前
   - 其实process.nextTick()会在node事件循环的各个周期优先执行
 参数：
-  - 1. callback回调函数 
+  - 1. callback回调函数
   - 2. args当调用callback时要传入的额外参数
 
 
