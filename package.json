@@ -20,7 +20,8 @@
     "dev": "node index.js",
     "order": "node test/index-order-test",
     "createServer": "node test/createServer",
-    "eventLoop": "node test/process.nextTick"
+    "eventLoop": "node test/process.nextTick",
+    "simple": "node test/simpleServer.js"
   },
   "repository": "koajs/koa",
   "keywords": [

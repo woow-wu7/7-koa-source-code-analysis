@@ -62,19 +62,42 @@ const fnMiddleware = function(context, next) {
   }))
 }
 
-7. 执行的最终状态如下
-fn1(async (ctx, fn2) => {
+7. fnMiddleware() 执行的最终状态如下
+- 7.1
+app.use(async (ctx, next) => {
+  console.log(1);
+  await next();
+  console.log(2);
+});
+app.use(async (ctx, next) => {
+  console.log(3);
+  await next();
+  console.log(4);
+});
+app.use(async (ctx, next) => {
+  console.log(5);
+  ctx.body = "测试中间执行顺序";
+});
+- 7.2
+fnMiddleware() => Promise.resolve(
+  // fn1()
   console.log(1)
-  fn2(async (ctx, fn3) => {
-      console.log(2)
-      fn3(ctx) => {
-        console.lo(3)
-      }
-      console.log(4)
-  })
-  console.log(5)
-})
-// 12345
+  await Promise.resolve( // next()
+    // fn2()
+    console.log(3)
+    await Promise.resolve( // next()
+      // fn3()
+      console.log(5)
+      return Promise.resolve()
+    )
+    console.log(4)
+  )
+  console.log(2)
+)
+.then(handleResponse)
+.catch(onerror)
+
+// 13542
 ```
 
 
