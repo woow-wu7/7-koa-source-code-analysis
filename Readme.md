@@ -1,6 +1,26 @@
 # koa-源码分析
 
 
+
+### KOA源码目录结构说明
+```
+1. 入口文件
+- 在package.json中通过 `main` 属性得知入口文件是 `lib/application.js`
+
+2. 核心文件
+- 核心文件都在 `lib` 文件夹中
+- lib/application.js --> 主要就是Koa类相关代码，即 new Koa()
+- lib/context.js ------> 是context对象相关
+- lib/request.js ------> request相关
+- bli/response.js -----> response相关
+
+3. 依赖
+- koa-compose ---------> 处理中间件
+- on-finished ---------> 主要作用：当 HTTP 请求关闭、完成或出错时执行回调
+```
+
+
+
 ### (1) 如何调试koa源码
 - 本项目已经做好了调试配置，只需要执行 `cnpm run dev` 断点调试 `index.js` 文件即可
 ```
