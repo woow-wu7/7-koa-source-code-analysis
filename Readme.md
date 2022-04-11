@@ -220,4 +220,6 @@ listen(...args) {
     - 使用：http.createServer((req, res) => { ...... })
     - 本项目中使用案例：/test-http.createServer.js
     - 官网说明：http://nodejs.cn/api/http.html#http_http_createserver_options_requestlistener
+  - **总流程**
+    - app.listen() -> http.createServer(this.callback()) -> fnMiddleware(ctx).then(handleResponse).catch(onerror) -> compose(this.middleware) -> dispatch() -> middleware(i) -> dispatch(i+1)
 ```
