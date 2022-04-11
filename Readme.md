@@ -179,3 +179,45 @@ new Promise((resolve) => {
 // 异步任务(微任务) 3 6
 // 异步任务(宏任务) 2 8 4
 ```
+
+### (5) koa 使用案例
+```
+1
+测试：本项目/index.js
+官网：https://koa.bootcss.com/#application
+```
+```
+2
+分析官网案例
+---
+
+const app = new Koa()
+- 执行构造函数
+
+
+app.use(async ctx => { ctx.body = 'Hello World'; });
+- 源码中use方法如下
+use(fn) {
+  this.middleware.push(fn); // 向 middleware 中添加中间件
+  return this; // 返回 Koa 实例，则可以链式调用 app.use()
+}
+- app.use
+ - app.use(async (ctx, next) => { console.log(1); await next(); console.log(2) })
+- 扩展
+  - koa中间件的执行顺序
+  - https://juejin.cn/post/7008056344540348453
+
+
+app.listen(3000);
+- 源码中listen方法如下
+listen(...args) {
+  const server = http.createServer(this.callback());
+  return server.listen(...args);
+}
+- 解析
+  - http.createServer
+    - 是node.js提供的原生api
+    - 使用：http.createServer((req, res) => { ...... })
+    - 本项目中使用案例：/test-http.createServer.js
+    - 官网说明：http://nodejs.cn/api/http.html#http_http_createserver_options_requestlistener
+```
