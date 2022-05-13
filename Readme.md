@@ -27,6 +27,9 @@
 
 ### (1) 如何调试koa源码
 - 本项目已经做好了调试配置，只需要执行 `cnpm run dev` 断点调试 `index.js` 文件即可
+- 其他测试在 test-koa 中
+  - 比如 http.createServer
+  - 比如 中间件的执行属性问题(洋葱模型)
 ```
 1. 克隆koa源码：git clone git@github.com:koajs/koa.git
 2. 安装依赖：cnpm install

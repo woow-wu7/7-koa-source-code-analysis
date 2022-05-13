@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="section">
+      <button id="button">点击，添加DOM</button>
+      <button id="button2">点击，添加DOM属性</button>
+      <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+      </ul>
+    </div>
+    <script>
+      // 1
+      // callback
+      // 作用
+      //  - 一个回调函数，每当被指定的节点或子树以及配置项有Dom变动时会被调用
+      // 参数
+      //  - 一个是描述所有被触发改动的 MutationRecord 对象数组
+      //  - 另一个是调用该函数的MutationObserver 对象
+
+      const callback = (mutationsList, observer) => {
+        console.log("mutationsList", mutationsList);
+      };
+
+      // 2
+      // new MutationObserver(callback)
+      // 创建一个观察器实例并传入回调函数
+      // 是一个 微任务
+      const observer = new MutationObserver(callback);
+
+      const target = document.getElementById("section");
+
+      // 3
+      // config
+      // 观察器的配置（需要观察什么变动）
+      const config = {
+        attributes: true, // 观察目标节点DOM的属性的变化
+        childList: true, // 观察目标子节点的变化，是否有添加或者删除
+        subtree: true, // 观察后代节点，默认为 false
+      };
+
+      // 4
+      // 观察目标节点
+      observer.observe(target, config);
+
+      // 可停止观察
+      // observer.disconnect();
+
+      // 5
+      // 变动 DOM
+      const button = document.getElementById("button");
+      button.onclick = function () {
+        const ul = document.querySelector("ul");
+        const li = document.createElement("li");li.innerHTML = 4;
+        ul.appendChild(li);
+      };
+
+      // 6
+      // 变动 DOM 属性
+      const button2 = document.getElementById("button2");
+      button2.onclick = function () {
+        const ul = document.querySelector("ul");
+        ul.setAttribute("data-href", "xxx");
+      };
+
+      // 7
+      // 资料
+      // - https://developer.mozilla.org/zh-CN/docs/Web/API/MutationObserver/MutationObserver
+      // - https://developer.mozilla.org/zh-CN/docs/Web/API/MutationObserver
+    </script>
+  </body>
+</html>
